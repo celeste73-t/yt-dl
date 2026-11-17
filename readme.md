@@ -12,7 +12,7 @@ A small wrapper around [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download au
 ## Installation
 
 ```bash
-git clone <repo-url> dl-yt
+git clone https://github.com/celeste73-t/yt-dl dl-yt
 cd dl-yt
 chmod +x install.sh
 ./install.sh
