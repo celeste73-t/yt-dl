@@ -1,0 +1,31 @@
+#!/bin/bash
+
+configFile="${XDG_CONFIG_HOME:-$HOME/.config}/yt-dl/config"
+
+# valeurs par défaut
+audioFormat="wav"
+videoFormat="mp4"
+maxHeight=1080
+
+# écrase les défauts si le fichier existe
+[ -f "$configFile" ] && source "$configFile"
+
+filetype=$1
+url=$2
+
+if [ -z "$filetype" ] || [ -z "$url" ]
+then
+	echo "Usage: yt-dl <audio|video> <url>"
+	return 1
+fi
+
+if [ $filetype == audio ]
+then
+	yt-dlp -x --audio-format $audioFormat --embed-metadata -o '%(title)s.%(ext)s' $url
+elif [ $filetype == video ]
+then
+	yt-dlp -f"bestvideo[height<=$maxHeight]+bestaudio/best[height<=$maxHeight]" --merge-output-format $videoFormat -o '%(title)s.%(ext)s' $url
+else
+	echo "Usage: yt-dl <audio|video> <url>"
+	return 1
+fi
