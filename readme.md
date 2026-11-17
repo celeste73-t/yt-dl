@@ -12,8 +12,8 @@ A small wrapper around [yt-dlp](https://github.com/yt-dlp/yt-dlp) to download au
 ## Installation
 
 ```bash
-git clone https://github.com/celeste73-t/yt-dl dl-yt
-cd dl-yt
+git clone https://github.com/celeste73-t/yt-dl yt-dl
+cd yt-dl
 chmod +x install.sh
 ./install.sh
 ```
